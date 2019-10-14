@@ -30,6 +30,7 @@ class RealCostViewController: UIViewController {
         tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
     }
     
+    
     func addTransparentView(frames: CGRect) {
         transparentView.frame = self.view.frame
         self.view.addSubview(transparentView)
