@@ -15,6 +15,7 @@ class CellClass: UITableViewCell {
 class RealCostViewController: UIViewController {
 
     @IBOutlet weak var btnSelectCounty: UIButton!
+    @IBOutlet weak var textContainer: UITextView!
     
     let transparentView = UIView()
     let tableView = UITableView()
@@ -28,6 +29,21 @@ class RealCostViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
+        let textURL = URL(string: "http://bing.benefitkitchen.com/api/bing?address=11215&persons[0][age]=32&persons[1][age]=12")!
+        // URLSession is starting a request to the URL we stored inside "imageURL"
+         let task = URLSession.shared.dataTask(with: textURL) {(data, response, error) in
+             //Checking to see if there is an error
+             if error == nil{
+               let loadedText = UITextView()
+                 self.textContainer = loadedText
+             }
+             
+             
+             
+             
+         }
+         task.resume()
+        
     }
     
     

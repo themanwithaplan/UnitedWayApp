@@ -10,7 +10,6 @@
 		52A01C55234D441D009E25BE /* BenefitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A01C53234D441D009E25BE /* BenefitsViewController.swift */; };
 		52A01C56234D441D009E25BE /* RealCostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A01C54234D441D009E25BE /* RealCostViewController.swift */; };
 		52A01C59234D4426009E25BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52A01C57234D4426009E25BE /* Main.storyboard */; };
-		64CF3D57235530EB008B48DE /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CF3D56235530EB008B48DE /* RestManager.swift */; };
 		64D4D8772347FEA300A6439F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D4D8762347FEA300A6439F /* AppDelegate.swift */; };
 		64D4D8792347FEA300A6439F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D4D8782347FEA300A6439F /* SceneDelegate.swift */; };
 		64D4D87B2347FEA300A6439F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D4D87A2347FEA300A6439F /* ContentView.swift */; };
@@ -23,7 +22,6 @@
 		52A01C53234D441D009E25BE /* BenefitsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BenefitsViewController.swift; sourceTree = "<group>"; };
 		52A01C54234D441D009E25BE /* RealCostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealCostViewController.swift; sourceTree = "<group>"; };
 		52A01C58234D4426009E25BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		64CF3D56235530EB008B48DE /* RestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 		64D4D8732347FEA300A6439F /* United-Way.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "United-Way.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D4D8762347FEA300A6439F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64D4D8782347FEA300A6439F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,9 +62,9 @@
 		64D4D8752347FEA300A6439F /* United-Way */ = {
 			isa = PBXGroup;
 			children = (
-				52A01C57234D4426009E25BE /* Main.storyboard */,
 				52A01C54234D441D009E25BE /* RealCostViewController.swift */,
 				52A01C53234D441D009E25BE /* BenefitsViewController.swift */,
+				52A01C57234D4426009E25BE /* Main.storyboard */,
 				64D4D8762347FEA300A6439F /* AppDelegate.swift */,
 				64D4D8782347FEA300A6439F /* SceneDelegate.swift */,
 				64D4D87A2347FEA300A6439F /* ContentView.swift */,
@@ -74,7 +72,6 @@
 				64D4D8812347FEA500A6439F /* LaunchScreen.storyboard */,
 				64D4D8842347FEA500A6439F /* Info.plist */,
 				64D4D87E2347FEA500A6439F /* Preview Content */,
-				64CF3D56235530EB008B48DE /* RestManager.swift */,
 			);
 			path = "United-Way";
 			sourceTree = "<group>";
@@ -162,7 +159,6 @@
 				52A01C56234D441D009E25BE /* RealCostViewController.swift in Sources */,
 				52A01C55234D441D009E25BE /* BenefitsViewController.swift in Sources */,
 				64D4D8772347FEA300A6439F /* AppDelegate.swift in Sources */,
-				64CF3D57235530EB008B48DE /* RestManager.swift in Sources */,
 				64D4D8792347FEA300A6439F /* SceneDelegate.swift in Sources */,
 				64D4D87B2347FEA300A6439F /* ContentView.swift in Sources */,
 			);
