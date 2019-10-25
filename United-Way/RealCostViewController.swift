@@ -29,24 +29,24 @@ class RealCostViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
-        let textURL = URL(string: "http://bing.benefitkitchen.com/api/bing?address=11215&persons[0][age]=32&persons[1][age]=12")!
-        // URLSession is starting a request to the URL we stored inside "imageURL"
-         let task = URLSession.shared.dataTask(with: textURL) {(data, response, error) in
-             //Checking to see if there is an error
-             if error == nil{
-               let loadedText = UITextView()
-                 self.textContainer = loadedText
-             }
-             
-             
-             
-             
-         }
-         task.resume()
-        
+       
     }
     
     
+    @IBAction func jsonTextBttn(_ sender: UIButton) {
+        
+               if let url = URL(string: "http://bing.benefitkitchen.com/api/bing?address=11215&persons[0][age]=32&persons[1][age]=12") {
+                   //Establishing a request with the URL
+                  URLSession.shared.dataTask(with: url) { data, response, error in
+                     if let data = data {
+                        if let jsonString = String(data: data, encoding: .utf8) {
+                           print(jsonString)
+                        }
+                      }
+                  }.resume()
+               }
+           
+    }
     func addTransparentView(frames: CGRect) {
         transparentView.frame = self.view.frame
         self.view.addSubview(transparentView)
