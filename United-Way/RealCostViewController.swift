@@ -15,7 +15,7 @@ class CellClass: UITableViewCell {
 class RealCostViewController: UIViewController {
 
     @IBOutlet weak var btnSelectCounty: UIButton!
-    @IBOutlet weak var textContainer: UITextView!
+ 
     
     let transparentView = UIView()
     let tableView = UITableView()
@@ -34,10 +34,9 @@ class RealCostViewController: UIViewController {
     
     
     @IBAction func jsonTextBttn(_ sender: UIButton) {
-        
-               if let url = URL(string: "http://bing.benefitkitchen.com/api/bing?address=11215&persons[0][age]=32&persons[1][age]=12") {
+        if let url = URL(string: "http://bing.benefitkitchen.com/api/bing?address=11215&persons[0][age]=32&persons[1][age]=12") {
                    //Establishing a request with the URL
-                  URLSession.shared.dataTask(with: url) { data, response, error in
+                URLSession.shared.dataTask(with: url) { data, response, error in
                      if let data = data {
                         if let jsonString = String(data: data, encoding: .utf8) {
                            print(jsonString)
