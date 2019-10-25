@@ -15,7 +15,8 @@ class CellClass: UITableViewCell {
 class RealCostViewController: UIViewController {
 
     @IBOutlet weak var btnSelectCounty: UIButton!
- 
+    @IBOutlet var jsonTextView: UITextView!
+    
     
     let transparentView = UIView()
     let tableView = UITableView()
@@ -30,11 +31,44 @@ class RealCostViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
        
+        // 1.
+        let urlString = "http://bing.benefitkitchen.com/api/bing?address=11215&persons[0][age]=32&persons[1][age]=2"
+        guard let url = URL(string: urlString) else { return }
+        
+        // 2. Establish connection with the url
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        if error != nil {
+            print(error!.localizedDescription)
+        }
+
+        guard let data = data else { return }
+        do {
+            // 3
+            //Decode data
+            let JSONData = try JSONDecoder().decode(JSONText.self, from: data)
+
+            // 4
+            //Get back to the main queue
+            DispatchQueue.main.async {
+                self.jsonTextView.text = JSONData.expenses
+          
+            }
+
+        } catch let jsonError {
+            print(jsonError)
+        }
+        // 5
+        }.resume()
+        
     }
     
+    struct JSONText: Codable {
+        let expenses: String
+        
+    }
     
     @IBAction func jsonTextBttn(_ sender: UIButton) {
-        if let url = URL(string: "http://bing.benefitkitchen.com/api/bing?address=11215&persons[0][age]=32&persons[1][age]=12") {
+        if let url = URL(string: "http://bing.benefitkitchen.com/api/bing?address=11215&persons[0][age]=32&persons[1][age]=2") {
                    //Establishing a request with the URL
                 URLSession.shared.dataTask(with: url) { data, response, error in
                      if let data = data {
