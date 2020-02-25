@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,7 +22,7 @@
 		471611B3237A1CF1001D5D63 /* ExpensesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesModel.swift; sourceTree = "<group>"; };
 		47BD6002237A43A900BE7C80 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		47BD6003237A43A900BE7C80 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
-		47EA8A31237912FC003EA7D9 /* United Way Mobile Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "United Way Mobile Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		47EA8A31237912FC003EA7D9 /* United Way iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "United Way iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47EA8A34237912FC003EA7D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47EA8A36237912FC003EA7D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		47EA8A38237912FC003EA7D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		47EA8A28237912FB003EA7D9 = {
 			isa = PBXGroup;
 			children = (
-				47EA8A33237912FC003EA7D9 /* United Way Mobile Application */,
+				47EA8A33237912FC003EA7D9 /* United Way iOS */,
 				47EA8A32237912FC003EA7D9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,12 +54,12 @@
 		47EA8A32237912FC003EA7D9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				47EA8A31237912FC003EA7D9 /* United Way Mobile Application.app */,
+				47EA8A31237912FC003EA7D9 /* United Way iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		47EA8A33237912FC003EA7D9 /* United Way Mobile Application */ = {
+		47EA8A33237912FC003EA7D9 /* United Way iOS */ = {
 			isa = PBXGroup;
 			children = (
 				47EA8A34237912FC003EA7D9 /* AppDelegate.swift */,
@@ -73,15 +73,15 @@
 				47BD6002237A43A900BE7C80 /* TableViewCell.swift */,
 				47BD6003237A43A900BE7C80 /* TableViewCell.xib */,
 			);
-			path = "United Way Mobile Application";
+			path = "United Way iOS";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		47EA8A30237912FB003EA7D9 /* United Way Mobile Application */ = {
+		47EA8A30237912FB003EA7D9 /* United Way iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 47EA8A45237912FC003EA7D9 /* Build configuration list for PBXNativeTarget "United Way Mobile Application" */;
+			buildConfigurationList = 47EA8A45237912FC003EA7D9 /* Build configuration list for PBXNativeTarget "United Way iOS" */;
 			buildPhases = (
 				47EA8A2D237912FB003EA7D9 /* Sources */,
 				47EA8A2E237912FB003EA7D9 /* Frameworks */,
@@ -91,9 +91,9 @@
 			);
 			dependencies = (
 			);
-			name = "United Way Mobile Application";
+			name = "United Way iOS";
 			productName = "United Way Mobile Application";
-			productReference = 47EA8A31237912FC003EA7D9 /* United Way Mobile Application.app */;
+			productReference = 47EA8A31237912FC003EA7D9 /* United Way iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -104,15 +104,15 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1120;
-				ORGANIZATIONNAME = "ARNAV SINGHANIA";
+				ORGANIZATIONNAME = "United Way";
 				TargetAttributes = {
 					47EA8A30237912FB003EA7D9 = {
 						CreatedOnToolsVersion = 11.2;
 					};
 				};
 			};
-			buildConfigurationList = 47EA8A2C237912FB003EA7D9 /* Build configuration list for PBXProject "United Way Mobile Application" */;
-			compatibilityVersion = "Xcode 9.3";
+			buildConfigurationList = 47EA8A2C237912FB003EA7D9 /* Build configuration list for PBXProject "United Way iOS" */;
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -124,7 +124,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				47EA8A30237912FB003EA7D9 /* United Way Mobile Application */,
+				47EA8A30237912FB003EA7D9 /* United Way iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -228,10 +228,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -282,9 +282,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -296,15 +297,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2378CMHKJ7;
-				INFOPLIST_FILE = "United Way Mobile Application/Info.plist";
+				DEVELOPMENT_TEAM = 6W6HC74Q57;
+				INFOPLIST_FILE = "$(SRCROOT)/United Way iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.arnavsinghania.United-Way-Mobile-Application";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.unitedway.ios;
+				PRODUCT_NAME = "United Way iOS";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -315,14 +318,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2378CMHKJ7;
-				INFOPLIST_FILE = "United Way Mobile Application/Info.plist";
+				DEVELOPMENT_TEAM = 6W6HC74Q57;
+				INFOPLIST_FILE = "$(SRCROOT)/United Way iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.arnavsinghania.United-Way-Mobile-Application";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.unitedway.ios;
+				PRODUCT_NAME = "United Way iOS";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -331,7 +334,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		47EA8A2C237912FB003EA7D9 /* Build configuration list for PBXProject "United Way Mobile Application" */ = {
+		47EA8A2C237912FB003EA7D9 /* Build configuration list for PBXProject "United Way iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				47EA8A43237912FC003EA7D9 /* Debug */,
@@ -340,7 +343,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		47EA8A45237912FC003EA7D9 /* Build configuration list for PBXNativeTarget "United Way Mobile Application" */ = {
+		47EA8A45237912FC003EA7D9 /* Build configuration list for PBXNativeTarget "United Way iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				47EA8A46237912FC003EA7D9 /* Debug */,
