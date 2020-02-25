@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  United-Way
+//  United Way Mobile Application
 //
-//  Created by Jacob Julag-ay on 10/4/19.
-//  Copyright © 2019 UnitedWay. All rights reserved.
+//  Created by ARNAV SINGHANIA on 11/10/19.
+//  Copyright © 2019 ARNAV SINGHANIA. All rights reserved.
 //
 
 import UIKit

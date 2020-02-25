@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:United-Way.xcodeproj">
+      location = "self:United Way Mobile Application.xcodeproj">
    </FileRef>
 </Workspace>
