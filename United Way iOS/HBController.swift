@@ -1,16 +1,16 @@
 //
-//  ViewController.swift
+//  HBController.swift
 //  United Way Mobile Application
 //
-//  Created by ARNAV SINGHANIA on 11/10/19.
-//  Copyright © 2019 ARNAV SINGHANIA. All rights reserved.
+//  Created by Sharaf Nazaar on 25/02/20.
+//  Copyright © 2019 United Way. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class HBController: UIViewController {
 
-    @IBOutlet weak var countyPickerView: UIPickerView!
+    @IBOutlet weak var dropdownTF: DropDown!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -18,22 +18,139 @@ class ViewController: UIViewController {
     @IBOutlet weak var summaryLabel: UILabel!
     private var selectedCountyCode:String?
     private var ageTextFieldCounter = 1
-    
-    private let countyPickerDataSource = [("Alameda County","94501"),("Alpine County","95646"),("Amador County","95601"),("Butte County","95965"),("Calaveras County","95221"),("Colusa County","95912"),("Contra Costa County","94506"),("Del Norte County","95531"),("El Dorado County","95613"),("Fresno County","93210"),("Glenn County","95913"),("Humboldt County","95501"),("Imperial County","92222"),("Inyo County","92328"),("Kern County","93203"),("Kings County","93202"),("Lake County","95422"),("Lassen County","96009"),("Los Angeles County","90001"),("Madera County","93601"),("Marin County","94901"),("Mariposa County","93623"),("Mendocino County","95410"),("Merced County","93620"),("Modoc County","96006"),("Mono County","93512"),("Monterey County","93426"),("Napa County","94503"),("Nevada County","95713"),("Orange County","92864"),("Placer County","95602"),("Plumas County","95915"),("Riverside County","91752"),("Sacramento County","94203"),("San Benito County","95023"),("San Bernardino County","91701"),("San Diego County","91901"),("San Francisco County","94101"),("San Joaquin County","95201"),("San Luis Obispo County","93401"),("San Mateo County","94002"),("Santa Barbara County","93013"),("Santa Clara County","94022"),("Santa Cruz County","95001"),("Shasta County","96001"),("Sierra County","95910"),("Siskiyou County","95568"),("Solano County","94510"),("Sonoma County","94922"),("Stanislaus County","95307"),("Sutter County","95659"),("Tehama County","96021"),("Trinity County","95527"),("Tulare County","93201"),("Tuolumne County","95305"),("Ventura County","91319"),("Yolo County","95605"),("Yuba County","95692")]
-    private let array = ["first","second","third"]
     private var ouputArray: [(String,Int?,Int?)] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCountyPickerView()
         setupTableView()
         setupTextField()
-    }
+        
+        // The list of array to display. Can be changed dynamically
+        dropdownTF.optionArray = ["Alameda County",
+                                  "Alpine County",
+                                  "Amador County",
+                                  "Butte County",
+                                  "Calaveras County",
+                                  "Colusa County",
+                                  "Contra Costa County",
+                                  "Del Norte County",
+                                  "El Dorado County",
+                                  "Fresno County",
+                                  "Glenn County",
+                                  "Humboldt County",
+                                  "Imperial County",
+                                  "Inyo County",
+                                  "Kern County",
+                                  "Kings County",
+                                  "Lake County",
+                                  "Lassen County",
+                                  "Los Angeles County",
+                                  "Madera County",
+                                  "Marin County",
+                                  "Mariposa County",
+                                  "Mendocino County",
+                                  "Merced County",
+                                  "Modoc County",
+                                  "Mono County",
+                                  "Monterey County",
+                                  "Napa County",
+                                  "Nevada County",
+                                  "Orange County",
+                                  "Placer County",
+                                  "Plumas County",
+                                  "Riverside County",
+                                  "Sacramento County",
+                                  "San Benito County",
+                                  "San Bernardino County",
+                                  "San Diego County",
+                                  "San Francisco County",
+                                  "San Joaquin County",
+                                  "San Luis Obispo County",
+                                  "San Mateo County",
+                                  "Santa Barbara County",
+                                  "Santa Clara County",
+                                  "Santa Cruz County",
+                                  "Shasta County",
+                                  "Sierra County",
+                                  "Siskiyou County",
+                                  "Solano County",
+                                  "Sonoma County",
+                                  "Stanislaus County",
+                                  "Sutter County",
+                                  "Tehama County",
+                                  "Trinity County",
+                                  "Tulare County",
+                                  "Tuolumne County",
+                                  "Ventura County",
+                                  "Yolo County",
+                                  "Yuba County"]
+        //Its Id Values and its optional
+        dropdownTF.optionIds = [94501,
+95646,
+95601,
+95965,
+95221,
+95912,
+94506,
+95531,
+95613,
+93210,
+95913,
+95501,
+92222,
+92328,
+93203,
+93202,
+95422,
+96009,
+90001,
+93601,
+94901,
+93623,
+95410,
+93620,
+96006,
+93512,
+93426,
+94503,
+95713,
+92864,
+95602,
+95915,
+91752,
+94203,
+95023,
+91701,
+91901,
+94101,
+95201,
+93401,
+94002,
+93013,
+94022,
+95001,
+96001,
+95910,
+95568,
+94510,
+94922,
+95307,
+95659,
+96021,
+95527,
+93201,
+95305,
+91319,
+95605,
+95692]
 
-    private func setupCountyPickerView() {
-        self.countyPickerView.dataSource = self
-        self.countyPickerView.delegate = self
-        self.countyPickerView.selectRow(3, inComponent: 0, animated: true)
+        // The the Closure returns Selected Index and String
+        dropdownTF.didSelect{(selectedText , index ,id) in
+            
+            self.selectedCountyCode = String(id);
+                print("hello: ",id);
+        }
+        
     }
     
     private func setupTableView() {
@@ -53,7 +170,6 @@ class ViewController: UIViewController {
         
         let label = UILabel(frame: self.ageLabel.frame)
         label.text = "Age:"
-        label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor = .white
         label.widthAnchor.constraint(equalToConstant: self.ageLabel.frame.size.width).isActive = true
         
@@ -125,7 +241,7 @@ class ViewController: UIViewController {
     }
     
     private func createOutputArray(from expensesObj: ExpensesModel) {
-        self.ouputArray.append(("Housing:",expensesObj.expenses?.rent,expensesObj.expenses?.annualRent))
+    self.ouputArray.append(("Housing:",expensesObj.expenses?.rent,expensesObj.expenses?.annualRent))
         self.ouputArray.append(("Child Care:",expensesObj.expenses?.childcare,expensesObj.expenses?.annualChildcare))
         self.ouputArray.append(("Food:",expensesObj.expenses?.food,expensesObj.expenses?.annualFood))
         self.ouputArray.append(("Health care:",expensesObj.expenses?.healthcare,expensesObj.expenses?.annualHealthcare))
@@ -136,32 +252,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.countyPickerDataSource.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.selectedCountyCode = self.countyPickerDataSource[row].1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.countyPickerDataSource[row].0
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return NSAttributedString(string: self.countyPickerDataSource[row].0, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-    }
-    
-}
-    
-
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension HBController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.ouputArray.count
@@ -176,12 +267,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         if let rightLabelText = self.ouputArray[indexPath.row].2 {
             cell.rightLabel.text = "\(rightLabelText)"
         }
+        
+        tableView.estimatedRowHeight = 10.0
+        tableView.rowHeight = UITableView.automaticDimension
+        
         return cell
+    
     }
 
 }
 
-extension ViewController: UITextFieldDelegate {
+extension HBController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
