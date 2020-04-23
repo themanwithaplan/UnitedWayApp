@@ -25,6 +25,23 @@ class HBController: UIViewController {
         setupTableView()
         setupTextField()
         
+      //  let fontAttributes = [NSAttributedString.Key.font: UIFont(name: self.ageLabel.font.fontName, size: 14)]
+        
+        let multipleAttributes: [NSAttributedString.Key : Any] = [
+        NSAttributedString.Key.foregroundColor: UIColor.gray,
+        NSAttributedString.Key.font: UIFont(name: self.ageLabel.font.fontName, size: 14) ]
+        
+        let multipleAttributes2: [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+               NSAttributedString.Key.font: UIFont(name: self.ageLabel.font.fontName, size: 14) ]
+        
+        UITabBarItem.appearance().setTitleTextAttributes(multipleAttributes as [NSAttributedString.Key : Any], for: .normal)
+        
+        UITabBarItem.appearance().setTitleTextAttributes(multipleAttributes2 as [NSAttributedString.Key : Any], for: .selected)
+        
+//        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.white], for: .normal)
+
+        
         // The list of array to display. Can be changed dynamically
         dropdownTF.optionArray = ["Alameda County",
                                   "Alpine County",
@@ -170,10 +187,13 @@ class HBController: UIViewController {
         
         let label = UILabel(frame: self.ageLabel.frame)
         label.text = "Age:"
-        label.textColor = .white
+        label.textColor = .darkGray
         label.widthAnchor.constraint(equalToConstant: self.ageLabel.frame.size.width).isActive = true
+        label.adjustsFontSizeToFitWidth = true
+        label.font = self.ageLabel.font
         
         let textField = UITextField(frame: self.ageTextField.frame)
+        textField.font = UIFont.boldSystemFont(ofSize: 14)
         textField.backgroundColor = UIColor.white
         textField.borderStyle = .roundedRect
         
@@ -273,6 +293,11 @@ extension HBController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection
+                                section: Int) -> String? {
+       return "                               Monthly               Annually"
     }
 
 }

@@ -16,8 +16,13 @@
 		47EA8A3C237912FC003EA7D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47EA8A3A237912FC003EA7D9 /* Main.storyboard */; };
 		47EA8A3E237912FC003EA7D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47EA8A3D237912FC003EA7D9 /* Assets.xcassets */; };
 		47EA8A41237912FC003EA7D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47EA8A3F237912FC003EA7D9 /* LaunchScreen.storyboard */; };
+		5239734B244AD9B100EBA0EB /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5239734A244AD9B100EBA0EB /* IQKeyboardManagerSwift */; };
+		5239734F2450491400EBA0EB /* BenefitsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239734E2450491400EBA0EB /* BenefitsTVCell.swift */; };
+		523973512450496100EBA0EB /* BenefitsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 523973502450496100EBA0EB /* BenefitsTVCell.xib */; };
 		523DF53D2411D633006D6E01 /* UWButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52589AC9240EF7B200B15881 /* UWButton.swift */; };
-		52EC8CAC2411DA87008ED795 /* BKController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC8CAB2411DA87008ED795 /* BKController.swift */; };
+		524A24162446B7E700D1653B /* BenefitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524A24152446B7E700D1653B /* BenefitModel.swift */; };
+		524A241824480CE800D1653B /* BKController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524A241724480CE800D1653B /* BKController.swift */; };
+		52EC8CAC2411DA87008ED795 /* BKControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC8CAB2411DA87008ED795 /* BKControllerOld.swift */; };
 		52EF97E42405E59D00B9E6BF /* iOSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EF97E32405E59D00B9E6BF /* iOSDropDown.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,8 +38,12 @@
 		47EA8A3D237912FC003EA7D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47EA8A40237912FC003EA7D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47EA8A42237912FC003EA7D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5239734E2450491400EBA0EB /* BenefitsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitsTVCell.swift; sourceTree = "<group>"; };
+		523973502450496100EBA0EB /* BenefitsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BenefitsTVCell.xib; sourceTree = "<group>"; };
+		524A24152446B7E700D1653B /* BenefitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitModel.swift; sourceTree = "<group>"; };
+		524A241724480CE800D1653B /* BKController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKController.swift; sourceTree = "<group>"; };
 		52589AC9240EF7B200B15881 /* UWButton.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = UWButton.swift; sourceTree = "<group>"; };
-		52EC8CAB2411DA87008ED795 /* BKController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKController.swift; sourceTree = "<group>"; };
+		52EC8CAB2411DA87008ED795 /* BKControllerOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKControllerOld.swift; sourceTree = "<group>"; };
 		52EF97E32405E59D00B9E6BF /* iOSDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSDropDown.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -43,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5239734B244AD9B100EBA0EB /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,7 +81,8 @@
 				47EA8A34237912FC003EA7D9 /* AppDelegate.swift */,
 				47EA8A36237912FC003EA7D9 /* SceneDelegate.swift */,
 				47EA8A38237912FC003EA7D9 /* HBController.swift */,
-				52EC8CAB2411DA87008ED795 /* BKController.swift */,
+				52EC8CAB2411DA87008ED795 /* BKControllerOld.swift */,
+				524A241724480CE800D1653B /* BKController.swift */,
 				471611B3237A1CF1001D5D63 /* ExpensesModel.swift */,
 				47EA8A3A237912FC003EA7D9 /* Main.storyboard */,
 				47EA8A3D237912FC003EA7D9 /* Assets.xcassets */,
@@ -79,8 +90,11 @@
 				47EA8A42237912FC003EA7D9 /* Info.plist */,
 				47BD6002237A43A900BE7C80 /* TableViewCell.swift */,
 				47BD6003237A43A900BE7C80 /* TableViewCell.xib */,
+				5239734E2450491400EBA0EB /* BenefitsTVCell.swift */,
+				523973502450496100EBA0EB /* BenefitsTVCell.xib */,
 				52EF97E32405E59D00B9E6BF /* iOSDropDown.swift */,
 				52589AC9240EF7B200B15881 /* UWButton.swift */,
+				524A24152446B7E700D1653B /* BenefitModel.swift */,
 			);
 			path = "United Way iOS";
 			sourceTree = "<group>";
@@ -101,6 +115,9 @@
 			dependencies = (
 			);
 			name = "United Way iOS";
+			packageProductDependencies = (
+				5239734A244AD9B100EBA0EB /* IQKeyboardManagerSwift */,
+			);
 			productName = "United Way Mobile Application";
 			productReference = 47EA8A31237912FC003EA7D9 /* United Way iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -129,6 +146,9 @@
 				Base,
 			);
 			mainGroup = 47EA8A28237912FB003EA7D9;
+			packageReferences = (
+				52397349244AD9B100EBA0EB /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+			);
 			productRefGroup = 47EA8A32237912FC003EA7D9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -146,6 +166,7 @@
 				47EA8A41237912FC003EA7D9 /* LaunchScreen.storyboard in Resources */,
 				47BD6005237A43A900BE7C80 /* TableViewCell.xib in Resources */,
 				47EA8A3E237912FC003EA7D9 /* Assets.xcassets in Resources */,
+				523973512450496100EBA0EB /* BenefitsTVCell.xib in Resources */,
 				47EA8A3C237912FC003EA7D9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,11 +180,14 @@
 			files = (
 				52EF97E42405E59D00B9E6BF /* iOSDropDown.swift in Sources */,
 				523DF53D2411D633006D6E01 /* UWButton.swift in Sources */,
+				524A241824480CE800D1653B /* BKController.swift in Sources */,
 				47BD6004237A43A900BE7C80 /* TableViewCell.swift in Sources */,
+				5239734F2450491400EBA0EB /* BenefitsTVCell.swift in Sources */,
 				47EA8A39237912FC003EA7D9 /* HBController.swift in Sources */,
 				47EA8A35237912FC003EA7D9 /* AppDelegate.swift in Sources */,
 				471611B4237A1CF2001D5D63 /* ExpensesModel.swift in Sources */,
-				52EC8CAC2411DA87008ED795 /* BKController.swift in Sources */,
+				52EC8CAC2411DA87008ED795 /* BKControllerOld.swift in Sources */,
+				524A24162446B7E700D1653B /* BenefitModel.swift in Sources */,
 				47EA8A37237912FC003EA7D9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,6 +389,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		52397349244AD9B100EBA0EB /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5239734A244AD9B100EBA0EB /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52397349244AD9B100EBA0EB /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 47EA8A29237912FB003EA7D9 /* Project object */;
 }
