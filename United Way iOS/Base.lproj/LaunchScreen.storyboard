@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,26 +15,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unitedWayLogo" translatesAutoresizingMaskIntoConstraints="NO" id="t2Q-wF-vxc">
-                                <rect key="frame" x="40" y="197.5" width="334" height="501"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="t2Q-wF-vxc">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="t2Q-wF-vxc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="AIA-UR-Nnf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t2Q-wF-vxc" secondAttribute="trailing" constant="40" id="jgb-gY-8xG"/>
-                            <constraint firstItem="t2Q-wF-vxc" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="rge-nC-2co"/>
-                            <constraint firstItem="t2Q-wF-vxc" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="tgp-vq-jfW"/>
+                            <constraint firstItem="t2Q-wF-vxc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0LM-YU-nSs"/>
+                            <constraint firstItem="t2Q-wF-vxc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0qM-C7-6YG"/>
+                            <constraint firstItem="t2Q-wF-vxc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="966-Fa-aKM"/>
+                            <constraint firstItem="t2Q-wF-vxc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="VhT-3p-dgD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
     <resources>
-        <image name="unitedWayLogo" width="400" height="250.5"/>
+        <image name="splash" width="1650" height="1500"/>
     </resources>
 </document>

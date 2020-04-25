@@ -16,7 +16,7 @@ open class DropDown : UITextField{
     var shadow : UIView!
     public  var selectedIndex: Int?
     public var scrollToSelectedIndex:Bool = false
-    public var selectedTextColor: UIColor = UIColor(red: 2/255, green: 2/255, blue: 2/255, alpha: 1)
+    public var selectedTextColor: UIColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
     var defaultTextColor = UIColor(red: 2/255, green: 2/255, blue: 2/255, alpha: 1)
     //MARK: IBInspectable
 

@@ -49,17 +49,17 @@ class BKController: UIViewController {
 //        yourTextView.scrollRangeToVisible(selectedRange)
     }
     
-//    private func setupTableView() {
-//        let nib = UINib(nibName: "BenefitsTVCell", bundle: nil)
-//        self.eligibilityTableView.register(nib, forCellReuseIdentifier: "BenefitsTVCell")
-//        self.eligibilityTableView.delegate = self
-//        self.eligibilityTableView.dataSource = self
-//    }
+    private func setupTableView() {
+        let nib = UINib(nibName: "BenefitsTVCell", bundle: nil)
+        self.eligibilityTableView.register(nib, forCellReuseIdentifier: "BenefitsTVCell")
+        self.eligibilityTableView.delegate = self
+        self.eligibilityTableView.dataSource = self
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      //  setupTableView()
+        setupTableView()
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -77,6 +77,7 @@ class BKController: UIViewController {
         let query = queryGenerator();
         //print("QUERY: "+query);
         performQuery(query: query)
+       
     }
     
 
@@ -188,20 +189,21 @@ class BKController: UIViewController {
             }
             do {
                 let benefits = try JSONDecoder().decode(BenefitModel.self, from: data)
+                self.outputArray = []
                 self.generateOutputArray(benefits: benefits)
                 
-                DispatchQueue.main.async {
-                    self.displayOutput()
-                }
+//                DispatchQueue.main.async {
+//                    self.displayOutput()
+//                }
                 
                 if let jsonResult = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
                    //print(jsonResult)
                 }
-//                self.ouputArray = []
+                
 //                self.createOutputArray(from: expenses)
-//                DispatchQueue.main.async {
-//                    self.eligibilityTableView.reloadData()
-//                }
+                DispatchQueue.main.async {
+                    self.eligibilityTableView.reloadData()
+                }
                // print(data)
             } catch let error {
                 print(error.localizedDescription)
@@ -269,17 +271,17 @@ class BKController: UIViewController {
                 let label = UILabel(frame: self.adultAgesTextField.frame)
                 label.text = labelText
                 label.textColor = UIColor.darkGray
-                label.font = UIFont.boldSystemFont(ofSize: 15)
+                label.font = UIFont.boldSystemFont(ofSize: 14)
                 
                 
                 self.mStackView.addArrangedSubview(label)
                 
-                if (inner == 2) {
-                     let label = UILabel(frame: self.adultAgesTextField.frame)
-                     label.text = " "
-                     label.font = UIFont.boldSystemFont(ofSize: 15)
-                     self.mStackView.addArrangedSubview(label)
-                }
+//                if (inner == 2) {
+//                     let label = UILabel(frame: self.adultAgesTextField.frame)
+//                     label.text = " "
+//                     label.font = UIFont.boldSystemFont(ofSize: 14)
+//                     self.mStackView.addArrangedSubview(label)
+//                }
                 
                 //print(outputArray[outer][inner])
             }
@@ -299,20 +301,67 @@ class BKController: UIViewController {
 
 }
 
-//extension BKController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return self.outputArray.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 150.0
-//    }
-//
+extension BKController: UITableViewDelegate, UITableViewDataSource {
+    
+ func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+         print ("outputArray.count: ", outputArray.count)
+        
+        if (outputArray.count > 1){
+            return outputArray.count
+        }
+        return 0
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70.0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BenefitsTVCell", for: indexPath) as! BenefitsTVCell
+        
+        print ("outputArray.value: ", outputArray[indexPath.row])
+        
+        var labelText = ""
+        var labelText2 = ""
+        var labelText3 = ""
+        
+        labelText = "Benefit:  "
+        labelText += outputArray[indexPath.row][0] as! String;
+        
+        labelText2 = "Status:  "
+        labelText2 += outputArray[indexPath.row][1] as! String;
+        
+        labelText3 = "Cash:  "
+        labelText3 += outputArray[indexPath.row][2] as! String;
+        
+        cell.topLabel?.font = UIFont.systemFont(ofSize: 14)
+        cell.centerLabel?.font = UIFont.systemFont(ofSize: 14)
+        cell.bottomLabel?.font = UIFont.systemFont(ofSize: 14)
+        
+        cell.topLabel?.text = labelText
+        cell.centerLabel?.text = labelText2
+        cell.bottomLabel?.text = labelText3
+
+        cell.topLabel?.textColor = UIColor.darkGray
+        cell.centerLabel?.textColor = UIColor.darkGray
+        cell.bottomLabel?.textColor = UIColor.darkGray
+
+        return cell
+    }
+
+
 //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "BenefitsTVCell", for: indexPath) as! BenefitsTVCell
 //
 //        print ("indexPath.row: ", indexPath.row)
 //        print ("outputArray.count: ", outputArray.count)
+//
 //
 //        for outer in 1...outputArray.count {
 //           // for inner in 0..<3 {
@@ -324,7 +373,9 @@ class BKController: UIViewController {
 //                    labelText += "Benefit:  "
 //                   // print ("outputArray[outer][0]: ",outputArray[indexPath.row][0])
 //                    labelText += outputArray[outer][0] as? String ?? ""
-//                    cell.topLabel.text = labelText
+//
+//                    cell.topLabel = UILabel(frame: self.adultAgesTextField.frame)
+//                    cell.topLabel?.text = labelText as? String ?? ""
 ////                    cell.topLabel.textColor = UIColor.darkGray
 ////                    cell.topLabel.font = UIFont.boldSystemFont(ofSize: 15)
 //
@@ -333,7 +384,7 @@ class BKController: UIViewController {
 //
 //                    labelText2 += "Status:   "
 //                    labelText2 += outputArray[outer][1] as? String ?? ""
-//                    cell.centerLabel.text = labelText2
+//                    cell.centerLabel?.text = labelText2
 //
 //
 //             //   } else {
@@ -341,7 +392,7 @@ class BKController: UIViewController {
 //
 //                    labelText3 += "Cash:      "
 //                    labelText3 += outputArray[outer][2] as? String ?? ""
-//                    cell.bottomLabel.text = labelText3
+//                    cell.bottomLabel?.text = labelText3
 //            //    }
 //                //let label = UILabel(frame: self.adultAgesTextField.frame)
 ////                cell.leftLabel.text = labelText
@@ -349,9 +400,9 @@ class BKController: UIViewController {
 ////                cell.leftLabel.font = UIFont.boldSystemFont(ofSize: 15)
 ////
 //
-//                cell.topLabel.textColor = UIColor.darkGray
-//                cell.centerLabel.textColor = UIColor.darkGray
-//                cell.bottomLabel.textColor = UIColor.darkGray
+//                cell.topLabel?.textColor = UIColor.darkGray
+//                cell.centerLabel?.textColor = UIColor.darkGray
+//                cell.bottomLabel?.textColor = UIColor.darkGray
 ////                cell.topLabel.font = UIFont.boldSystemFont(ofSize: 15)
 ////                cell.centerLabel.font = UIFont.boldSystemFont(ofSize: 15)
 ////                cell.bottomLabel.font = UIFont.boldSystemFont(ofSize: 15)
@@ -379,16 +430,17 @@ class BKController: UIViewController {
 //            tableView.estimatedRowHeight = 150.0
 //            tableView.rowHeight = UITableView.automaticDimension
 //
+//
 //            return cell
 //
 //    }
-//
+
 //    func tableView(_ tableView: UITableView, titleForHeaderInSection
 //                                section: Int) -> String? {
 //       return "                               Monthly               Annually"
 //    }
 
-//}
+}
 
 
 //https://api.benefitkitchen.com/benefits?categories=all&live_zip=11215&monthly_income=4000&food%20_stamps=200&child_care_cost=500&persons[0][age]=0&persons[1][age]=8&persons[2][age]=37&access_token=prod_JtdDbRFnyT2yLomHgn2J

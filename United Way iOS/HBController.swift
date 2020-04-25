@@ -19,6 +19,14 @@ class HBController: UIViewController {
     private var selectedCountyCode:String?
     private var ageTextFieldCounter = 1
     private var ouputArray: [(String,Int?,Int?)] = []
+    @IBOutlet weak var hbScrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        dropdownTF.placeholder = "Select your County";
+        dropdownTF.setNeedsDisplay()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,6 +169,9 @@ class HBController: UIViewController {
 95605,
 95692]
 
+        
+        dropdownTF.selectedTextColor = .blue
+        dropdownTF.textColor = .white
         // The the Closure returns Selected Index and String
         dropdownTF.didSelect{(selectedText , index ,id) in
             
@@ -193,10 +204,9 @@ class HBController: UIViewController {
         label.font = self.ageLabel.font
         
         let textField = UITextField(frame: self.ageTextField.frame)
-        textField.font = UIFont.boldSystemFont(ofSize: 14)
+        textField.font = UIFont.systemFont(ofSize: 14)
         textField.backgroundColor = UIColor.white
         textField.borderStyle = .roundedRect
-        
         textField.tag = 2
         
         let horizontalStack = UIStackView()
@@ -206,7 +216,18 @@ class HBController: UIViewController {
         horizontalStack.addArrangedSubview(textField)
         
         self.verticalStack.addArrangedSubview(horizontalStack)
+        
+       // hbScrollView.frame = CGRectMake(hbScrollView.frame.origin.x, originY, width, height);
+        hbScrollView.contentSize = CGSize(width: hbScrollView.frame.size.width, height: hbScrollView.frame.size.height+self.ageTextField.frame.size.height);
+        
+        self.contentView.setNeedsLayout()
+        self.contentView.layoutIfNeeded()
 
+        
+//        self.contentView.contensiz = CGRect(x: 0, y: 0, width: self.contentView.frame.width, height: self.contentView.frame.size.height+60.0)
+//        self.contentView.sizeThatFits(CGSize)
+
+       
     }
         
     @IBAction func submitButtonPressed(_ sender: UIButton) {
