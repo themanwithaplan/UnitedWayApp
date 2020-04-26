@@ -15,12 +15,14 @@ class HBController: UIViewController {
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var verticalStack: UIStackView!
-    @IBOutlet weak var summaryLabel: UILabel!
     private var selectedCountyCode:String?
     private var ageTextFieldCounter = 1
     private var ouputArray: [(String,Int?,Int?)] = []
     @IBOutlet weak var hbScrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
+    
+    var buttonPressed : Bool! = false
+    var selectedCounty : String? = ""
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -176,7 +178,7 @@ class HBController: UIViewController {
         dropdownTF.didSelect{(selectedText , index ,id) in
             
             self.selectedCountyCode = String(id);
-                print("hello: ",id);
+            self.selectedCounty = selectedText;
         }
         
     }
@@ -231,6 +233,7 @@ class HBController: UIViewController {
     }
         
     @IBAction func submitButtonPressed(_ sender: UIButton) {
+        buttonPressed = true
         if let countyCode = self.selectedCountyCode {
             
             var urlString: String?
@@ -289,6 +292,7 @@ class HBController: UIViewController {
         self.ouputArray.append(("Transportation:",expensesObj.expenses?.transportation,expensesObj.expenses?.annualTransportation))
         self.ouputArray.append(("Miscellaneous:",expensesObj.expenses?.misc,expensesObj.expenses?.annualMisc))
         self.ouputArray.append(("Taxes:",expensesObj.monthly_taxes,expensesObj.net_taxes))
+        self.ouputArray.append(("Total:",expensesObj.expenses?.monthlyTotal,expensesObj.expenses?.annualTotal))
     }
     
 }
@@ -301,6 +305,7 @@ extension HBController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+        cell.totalSeparator.backgroundColor = .white
         cell.leftLabel.text = self.ouputArray[indexPath.row].0
         if let centerLabelText =  self.ouputArray[indexPath.row].1 {
             cell.centerLabel.text = "\(centerLabelText)"
@@ -309,17 +314,99 @@ extension HBController: UITableViewDelegate, UITableViewDataSource {
             cell.rightLabel.text = "\(rightLabelText)"
         }
         
-        tableView.estimatedRowHeight = 10.0
-        tableView.rowHeight = UITableView.automaticDimension
+        if (indexPath.row == 7){
+            cell.totalSeparator.backgroundColor = .black
+        }
         
         return cell
     
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection
-                                section: Int) -> String? {
-       return "                               Monthly               Annually"
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let monthlyLabel = UILabel()
+        monthlyLabel.frame = CGRect(x: 152, y: 8, width: 60, height: 20)
+        monthlyLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        monthlyLabel.text = "Monthly"
+        
+        let annuallyLabel = UILabel()
+        annuallyLabel.frame = CGRect(x: 282, y: 8, width: 60, height: 20)
+        annuallyLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        annuallyLabel.text = "Annually"
+        annuallyLabel.sizeToFit();
+
+        let headerView = UIView()
+        headerView.addSubview(monthlyLabel)
+        headerView.addSubview(annuallyLabel)
+
+        return headerView
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if buttonPressed == true {
+            return  20.0
+        }
+        else {
+            return 0.0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 30.0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if buttonPressed == true {
+            return  20.0
+        }
+        else {
+            return 0.0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
+    {
+        let footerText = UILabel()
+        footerText.frame = CGRect(x: 14, y: 10, width: 320, height: 60)
+        footerText.font = UIFont.systemFont(ofSize: 8)
+        footerText.numberOfLines = 3
+        //footerText.sizeToFit()
+        
+        var summaryText = "It takes $"
+            summaryText += "\(self.ouputArray[7].1 ?? 0)"
+            summaryText += " (after taxes), on average, for a "
+            summaryText += String(ageTextFieldCounter)
+            summaryText += "-person household to make ends meet in "
+            summaryText += self.selectedCounty!
+            summaryText += ", or $"
+            summaryText += "\(self.ouputArray[7].2 ?? 0)"
+            summaryText += " per year."
+        
+        footerText.text = summaryText
+        let footerView = UIView()
+        footerView.addSubview(footerText)
+        return footerView
+    }
+    
+//    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+//
+//        if buttonPressed == true {
+//            buttonPressed = false
+////            var summaryText = "It takes $"
+////            summaryText += "\(self.ouputArray[7].1 ?? 0) "
+////            summaryText += " (after taxes), on average, for a "
+////            summaryText += String(ageTextFieldCounter)
+////            summaryText += "-person household to make ends meet in Alameda County, or $"
+////            summaryText += "\(self.ouputArray[7].2 ?? 0)"
+////            summaryText += " per year."
+////            return summaryText
+//        }
+//        else {
+//            return ""
+//        }
+      
+
+//    }
 
 }
 

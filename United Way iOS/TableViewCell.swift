@@ -10,6 +10,7 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
     
+    @IBOutlet weak var totalSeparator: UILabel!
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var centerLabel: UILabel!
     @IBOutlet weak var rightLabel: UILabel!

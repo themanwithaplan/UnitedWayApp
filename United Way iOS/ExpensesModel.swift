@@ -49,4 +49,13 @@ struct Expense:Decodable {
     var annualMisc:Int? {
         return (self.misc ?? 0)*12
     }
+    
+    var monthlyTotal:Int? {
+        
+        var total = self.rent! + self.childcare! + self.food! + self.healthcare! + self.transportation! + self.misc!;
+        return total
+    }
+    var annualTotal:Int? {
+        return (self.monthlyTotal ?? 0)*12
+    }
 }
