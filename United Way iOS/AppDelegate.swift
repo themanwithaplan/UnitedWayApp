@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  United Way Mobile Application
 //
-//  Created by ARNAV SINGHANIA on 11/10/19.
-//  Copyright © 2019 ARNAV SINGHANIA. All rights reserved.
+//  Created by Sharaf Nazaar on 3/10/20.
+//  Copyright © 2020 Sharaf Nazaar. All rights reserved.
 //
 
 import UIKit

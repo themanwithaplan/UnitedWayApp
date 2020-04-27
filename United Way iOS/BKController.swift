@@ -49,6 +49,28 @@ class BKController: UIViewController {
 //        yourTextView.scrollRangeToVisible(selectedRange)
     }
     
+    @IBOutlet weak var taxesQLabel: UILabel!
+    @IBAction func marriedSegmentChanged(_ sender: Any) {
+        
+        switch maritalStatusSegmentedController.selectedSegmentIndex
+            
+        {
+        case 0:
+            taxesQLabel.isHidden = false
+            taxesQLabel.isEnabled = true
+            taxesSegmentedController.isHidden = false
+            taxesSegmentedController.isEnabled = true
+            
+        case 1:
+            taxesQLabel.isHidden = true
+            taxesQLabel.isEnabled = false
+            taxesSegmentedController.isHidden = true
+            taxesSegmentedController.isEnabled = false
+        default:
+            break
+        }
+        
+    }
     private func setupTableView() {
         let nib = UINib(nibName: "BenefitsTVCell", bundle: nil)
         self.eligibilityTableView.register(nib, forCellReuseIdentifier: "BenefitsTVCell")
@@ -60,6 +82,7 @@ class BKController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        eligibilityTableView.isHidden = true
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -77,6 +100,8 @@ class BKController: UIViewController {
         let query = queryGenerator();
         //print("QUERY: "+query);
         performQuery(query: query)
+        
+        eligibilityTableView.isHidden = false
        
     }
     
@@ -291,7 +316,6 @@ class BKController: UIViewController {
 //        constraintBottom?.isActive = true
 //
         self.mStackView.setNeedsLayout()
-
         self.mStackView.layoutIfNeeded()
 
       //  self.scrollView.addSubview(mStackView)

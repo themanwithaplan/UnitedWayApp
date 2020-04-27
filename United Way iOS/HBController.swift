@@ -13,8 +13,12 @@ class HBController: UIViewController {
     @IBOutlet weak var dropdownTF: DropDown!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var ageTextField: UITextField!
+    
+    @IBOutlet weak var removeAge: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var verticalStack: UIStackView!
+    
+    var horizontalSubview    = UIStackView()
     private var selectedCountyCode:String?
     private var ageTextFieldCounter = 1
     private var ouputArray: [(String,Int?,Int?)] = []
@@ -34,7 +38,7 @@ class HBController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         setupTextField()
-        
+        self.removeAge.isHidden = true;
       //  let fontAttributes = [NSAttributedString.Key.font: UIFont(name: self.ageLabel.font.fontName, size: 14)]
         
         let multipleAttributes: [NSAttributedString.Key : Any] = [
@@ -194,6 +198,17 @@ class HBController: UIViewController {
         self.ageTextField.delegate = self
     }
     
+    // trigger action when button is touched up
+    @objc func buttonTapped(sender: UIButton) {
+        print("Button was tapped")
+        verticalStack.removeArrangedSubview(horizontalSubview)
+        horizontalSubview.removeFromSuperview()
+
+        let currentIndex = verticalStack.arrangedSubviews.count - 1
+        horizontalSubview = verticalStack.arrangedSubviews[currentIndex] as! UIStackView
+        
+    }
+    
     @IBAction func addPersonButtonPressed(_ sender: UIButton) {
         
         self.ageTextFieldCounter += 1
@@ -211,13 +226,24 @@ class HBController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.tag = 2
         
-        let horizontalStack = UIStackView()
-        horizontalStack.axis = .horizontal
+        let button = UIButton(frame: self.removeAge.frame)
+        button.addTarget(self, action: #selector(buttonTapped(sender:)), for: UIControl.Event.touchUpInside)
+        button.tag = 3
+        button.setTitle("X", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.isHidden = false;
+        button.isOpaque = true;
+
         
-        horizontalStack.addArrangedSubview(label)
-        horizontalStack.addArrangedSubview(textField)
+        horizontalSubview = UIStackView()
+        horizontalSubview.axis = .horizontal
         
-        self.verticalStack.addArrangedSubview(horizontalStack)
+        horizontalSubview.addArrangedSubview(label)
+        horizontalSubview.addArrangedSubview(textField)
+        horizontalSubview.addArrangedSubview(button)
+        
+        self.verticalStack.addArrangedSubview(horizontalSubview)
         
        // hbScrollView.frame = CGRectMake(hbScrollView.frame.origin.x, originY, width, height);
         hbScrollView.contentSize = CGSize(width: hbScrollView.frame.size.width, height: hbScrollView.frame.size.height+self.ageTextField.frame.size.height);
@@ -231,12 +257,33 @@ class HBController: UIViewController {
 
        
     }
+    
+    func showSimpleAlert(option: Int) {
+        var message = "";
+        if (option == 0){
+            message = "Please select your county"
+        }
+        else {
+            message = "Please add the age of household members"
+        }
+        
+        let alert = UIAlertController(title: "Error", message: message,         preferredStyle: UIAlertController.Style.alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+
+        }))
+
+        self.present(alert, animated: true, completion: nil)
+    }
         
     @IBAction func submitButtonPressed(_ sender: UIButton) {
         buttonPressed = true
         if let countyCode = self.selectedCountyCode {
-            
             var urlString: String?
+            
+            if let text = self.ageTextField.text, !text.isEmpty {
+            
+                
             
             if (self.ageTextFieldCounter == 1) {
                 urlString = "https://bing.benefitkitchen.com/api/bing?address=\(countyCode)&persons[0][age]=\(ageTextField.text ?? "0")"
@@ -278,9 +325,13 @@ class HBController: UIViewController {
                 }
             })
             task.resume()
-            
-            
-            
+            }
+            else {
+                showSimpleAlert(option: 1)
+            }
+        }
+        else {
+            showSimpleAlert(option: 0)
         }
     }
     
@@ -306,12 +357,20 @@ extension HBController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         cell.totalSeparator.backgroundColor = .white
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        
+        
         cell.leftLabel.text = self.ouputArray[indexPath.row].0
         if let centerLabelText =  self.ouputArray[indexPath.row].1 {
-            cell.centerLabel.text = "\(centerLabelText)"
+            let formattedNumber = numberFormatter.string(from: NSNumber(value:centerLabelText))
+            //cell.centerLabel.text = "$\(centerLabelText)"
+            cell.centerLabel.text = "$\(formattedNumber!)"
         }
         if let rightLabelText = self.ouputArray[indexPath.row].2 {
-            cell.rightLabel.text = "\(rightLabelText)"
+            let formattedNumber = numberFormatter.string(from: NSNumber(value:rightLabelText))
+            cell.rightLabel.text = "$\(formattedNumber!)"
         }
         
         if (indexPath.row == 7){
