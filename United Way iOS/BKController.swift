@@ -204,6 +204,7 @@ class BKController: UIViewController {
         let session = URLSession.shared
         //now create the URLRequest object using the url object
         let request = URLRequest(url: URL(string: query)!)
+                
         //create dataTask using the session object to send data to the server
         let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
             guard error == nil else {
@@ -221,9 +222,9 @@ class BKController: UIViewController {
 //                    self.displayOutput()
 //                }
                 
-                if let jsonResult = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
-                   //print(jsonResult)
-                }
+//                if let jsonResult = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
+//                   //print(jsonResult)
+//                }
                 
 //                self.createOutputArray(from: expenses)
                 DispatchQueue.main.async {
@@ -231,12 +232,29 @@ class BKController: UIViewController {
                 }
                // print(data)
             } catch let error {
-                print(error.localizedDescription)
+                self.showSimpleAlert(message: error.localizedDescription)
             }
         })
         task.resume()
         
         
+    }
+    
+    func showSimpleAlert(message: String) {
+//        var message = "";
+//        if (option == 0){
+//            message = "Please select your county"
+//        }
+//        else {
+//            message = "Please add the age of household members"
+//        }
+        DispatchQueue.main.async {
+        let alert = UIAlertController(title: "Error", message: message,         preferredStyle: UIAlertController.Style.alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+        }))
+        self.present(alert, animated: true, completion: nil)
+            }
     }
     
     private func generateOutputArray(benefits: BenefitModel) {
@@ -285,18 +303,23 @@ class BKController: UIViewController {
         for outer in 1..<outputArray.count {
             for inner in 0..<3 {
                 var labelText = ""
-                if (inner == 0) {
-                    labelText += "Benefit:  "
-                } else if (inner == 1) {
-                    labelText += "Status:   "
-                } else {
-                    labelText += "Cash:      "
-                }
-                labelText += outputArray[outer][inner] as? String ?? ""
                 let label = UILabel(frame: self.adultAgesTextField.frame)
-                label.text = labelText
                 label.textColor = UIColor.darkGray
                 label.font = UIFont.boldSystemFont(ofSize: 14)
+                
+                if (inner == 0) {
+                    labelText += "Benefit:  "
+                    labelText += outputArray[outer][inner] as? String ?? ""
+                    label.text = labelText
+                    
+                } else if (inner == 1) {
+                    labelText += "Status:  Likely Eligible"
+                } else {
+                    labelText += "Cash:      "
+                    labelText += outputArray[outer][inner] as? String ?? ""
+                    label.text = labelText
+                }
+                
                 
                 
                 self.mStackView.addArrangedSubview(label)
@@ -334,8 +357,13 @@ extension BKController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          print ("outputArray.count: ", outputArray.count)
         
-        if (outputArray.count > 1){
-            return outputArray.count
+        if (outputArray.count > 0){
+            if(outputArray[0].count > 0){
+                return outputArray.count
+            }
+            else {
+                return 0
+            }
         }
         return 0
     }
@@ -357,10 +385,10 @@ extension BKController: UITableViewDelegate, UITableViewDataSource {
         labelText = "Benefit:  "
         labelText += outputArray[indexPath.row][0] as! String;
         
-        labelText2 = "Status:  "
+        labelText2 = "Status:   "
         labelText2 += outputArray[indexPath.row][1] as! String;
         
-        labelText3 = "Cash:  "
+        labelText3 = "Cash:     $"
         labelText3 += outputArray[indexPath.row][2] as! String;
         
         cell.topLabel?.font = UIFont.systemFont(ofSize: 14)

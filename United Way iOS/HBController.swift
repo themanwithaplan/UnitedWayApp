@@ -250,12 +250,7 @@ class HBController: UIViewController {
         
         self.contentView.setNeedsLayout()
         self.contentView.layoutIfNeeded()
-
         
-//        self.contentView.contensiz = CGRect(x: 0, y: 0, width: self.contentView.frame.width, height: self.contentView.frame.size.height+60.0)
-//        self.contentView.sizeThatFits(CGSize)
-
-       
     }
     
     func showSimpleAlert(option: Int) {
@@ -270,9 +265,7 @@ class HBController: UIViewController {
         let alert = UIAlertController(title: "Error", message: message,         preferredStyle: UIAlertController.Style.alert)
 
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
-
         }))
-
         self.present(alert, animated: true, completion: nil)
     }
         
@@ -282,9 +275,6 @@ class HBController: UIViewController {
             var urlString: String?
             
             if let text = self.ageTextField.text, !text.isEmpty {
-            
-                
-            
             if (self.ageTextFieldCounter == 1) {
                 urlString = "https://bing.benefitkitchen.com/api/bing?address=\(countyCode)&persons[0][age]=\(ageTextField.text ?? "0")"
             } else {
@@ -384,7 +374,7 @@ extension HBController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
         let monthlyLabel = UILabel()
-        monthlyLabel.frame = CGRect(x: 152, y: 8, width: 60, height: 20)
+        monthlyLabel.frame = CGRect(x: 148, y: 8, width: 60, height: 20)
         monthlyLabel.font = UIFont.boldSystemFont(ofSize: 14)
         monthlyLabel.text = "Monthly"
         
@@ -427,7 +417,7 @@ extension HBController: UITableViewDelegate, UITableViewDataSource {
     {
         let footerText = UILabel()
         footerText.frame = CGRect(x: 14, y: 10, width: 320, height: 60)
-        footerText.font = UIFont.systemFont(ofSize: 8)
+        footerText.font = UIFont.systemFont(ofSize: 9)
         footerText.numberOfLines = 3
         //footerText.sizeToFit()
         

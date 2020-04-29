@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Budget Calculator-->
+        <!--Household Budget-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController interfaceStyle="light" id="BYZ-38-t0r" customClass="HBController" customModule="United_Way_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -242,7 +242,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vz8-1o-P9t"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Budget Calculator" image="budgets" id="UiT-nN-UFY">
+                    <tabBarItem key="tabBarItem" title="Household Budget" image="budgets" id="UiT-nN-UFY">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-5"/>
                     </tabBarItem>
@@ -595,8 +595,8 @@
                                                 <nil key="highlightedColor"/>
                                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" text="Are you filing taxes seperately from your spouse?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="355" translatesAutoresizingMaskIntoConstraints="NO" id="rLt-tI-Jc1">
-                                                <rect key="frame" x="11" y="278" width="263" height="36"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" text="Are you filing taxes jointly with your spouse?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="355" translatesAutoresizingMaskIntoConstraints="NO" id="rLt-tI-Jc1">
+                                                <rect key="frame" x="11" y="278" width="298" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="x1u-SC-VEa"/>
                                                 </constraints>
@@ -725,6 +725,7 @@
                                             <constraint firstItem="wnz-cN-Q9f" firstAttribute="top" secondItem="AoI-fR-XVa" secondAttribute="top" constant="575" id="FFs-RF-B4i"/>
                                             <constraint firstItem="o5L-ZL-etM" firstAttribute="top" secondItem="tJ4-fs-e7Q" secondAttribute="bottom" constant="40" id="IEA-pZ-rl5"/>
                                             <constraint firstItem="d8o-pn-Vu3" firstAttribute="top" secondItem="Trg-fM-Lwh" secondAttribute="bottom" constant="1" id="KPW-mp-EST"/>
+                                            <constraint firstAttribute="trailing" secondItem="rLt-tI-Jc1" secondAttribute="trailing" constant="11" id="L7L-YR-6SN"/>
                                             <constraint firstItem="I0T-eS-fwQ" firstAttribute="top" secondItem="qwg-Aw-aIG" secondAttribute="bottom" constant="2" id="LMx-xm-WE3"/>
                                             <constraint firstItem="Trg-fM-Lwh" firstAttribute="top" secondItem="olF-KZ-CbK" secondAttribute="bottom" constant="8" id="Ld5-dt-wLW"/>
                                             <constraint firstItem="Tq8-pN-n58" firstAttribute="leading" secondItem="AoI-fR-XVa" secondAttribute="leading" constant="11" id="PBk-15-5Bb"/>
@@ -809,18 +810,19 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jvq-4R-5vy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="911" y="-348"/>
+            <point key="canvasLocation" x="909.375" y="-348.59154929577466"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="bdG-4u-EvS">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="4k4-xJ-wfe" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="uXb-ih-Pvz">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uXb-ih-Pvz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.072939239439999998" green="0.27583265299999998" blue="0.41297960280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="rcq-O1-Q7v"/>
