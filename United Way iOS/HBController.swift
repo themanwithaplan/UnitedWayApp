@@ -304,7 +304,8 @@ class HBController: UIViewController {
                     return
                 }
                 do {
-                    let expenses = try JSONDecoder().decode(ExpensesModel.self, from: data)
+                    var expenses = try JSONDecoder().decode(ExpensesModel.self, from: data)
+                    expenses.expenses?.exp_taxes = expenses.net_taxes
                     self.ouputArray = []
                     self.createOutputArray(from: expenses)
                     DispatchQueue.main.async {

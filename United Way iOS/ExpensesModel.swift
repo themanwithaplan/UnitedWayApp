@@ -10,7 +10,7 @@ import Foundation
 
 struct ExpensesModel:Decodable {
     
-    let expenses:Expense?
+    var expenses:Expense?
     
     let net_taxes:Int? //rounding off errors
     var monthly_taxes:Int? {
@@ -50,9 +50,15 @@ struct Expense:Decodable {
         return (self.misc ?? 0)*12
     }
     
+    var exp_taxes:Int? //rounding off errors
+    var monthly_exp_taxes:Int? {
+        return (self.exp_taxes ?? 0)/12
+    }
+    
     var monthlyTotal:Int? {
+                
+        var total = self.rent! + self.childcare! + self.food! + self.healthcare! + self.transportation! + self.misc! + self.monthly_exp_taxes!;
         
-        var total = self.rent! + self.childcare! + self.food! + self.healthcare! + self.transportation! + self.misc!;
         return total
     }
     var annualTotal:Int? {
