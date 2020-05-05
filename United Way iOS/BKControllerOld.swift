@@ -36,7 +36,6 @@ class BKControllerOld: UIViewController {
     @IBAction func submitButtonPressed(_ sender: UIButton) {
         
         let query = queryGenerator();
-        print("QUERY: "+query);
 
         performQuery(query: query)
     }

@@ -372,11 +372,62 @@ extension BKController: UITableViewDelegate, UITableViewDataSource {
         return 70.0
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedBenefit = outputArray[indexPath.row]
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailVC = storyBoard.instantiateViewController(withIdentifier: "BenefitDetailView") as! BenefitDetailController
+        detailVC.benefitName = selectedBenefit[0] as! String
+        self.present(detailVC, animated: true, completion: nil)
+
+        
+        
+//      let benefitDet = outputArray[indexPath.row] as String
+//      let benefitDetModel = benefitDet.data(using: .utf8)!
+//        do {
+//            let selectedBenefit = try JSONDecoder().decode(BenefitDetailModel.self, from: benefitDetModel)
+//        } catch let error {
+//            
+//        }
+        
+      //  performSegue(withIdentifier: "benefitDetailSegue", sender: self)
+        
+//        if let viewController = storyboard?.instantiateViewController(identifier: "BenefitDetailView") as? BenefitDetailController {
+//            viewController.benefitName = selectedBenefit[0] as! String
+//            navigationController?.pushViewController(viewController, animated: true)
+//        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+//        if  segue.identifier == "benefitDetailSegue",
+//        let destination = segue.destination as? BenefitDetailController,
+//        let currentIndex = eligibilityTableView.indexPathForSelectedRow?.row
+//
+////        if  (segue.identifier == "benefitDetailSegue",
+////            let destination = segue.destination as? BenefitDetailController,
+////            let currentIndex = eligibilityTableView.indexPathForSelectedRow?.row
+////            let blogIndex = tableView.indexPathForSelectedRow?.row
+//        {
+//            let selectedBenefit = outputArray[currentIndex]
+//            destination.benefitName = selectedBenefit[0] as? String
+//        }
+        
+        if (segue.identifier == "benefitDetailSegue"){
+            
+            let viewController = segue.destination as! BenefitDetailController
+            let currentIndex = eligibilityTableView.indexPathForSelectedRow?.row ?? 0
+            let selectedBenefit = outputArray[currentIndex]
+                       viewController.benefitName = selectedBenefit[0] as? String
+            
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "BenefitsTVCell", for: indexPath) as! BenefitsTVCell
         
-        print ("outputArray.value: ", outputArray[indexPath.row])
+//        print ("outputArray.value: ", outputArray[indexPath.row])
         
         var labelText = ""
         var labelText2 = ""

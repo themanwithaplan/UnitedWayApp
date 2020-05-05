@@ -20,6 +20,7 @@
 		5239734F2450491400EBA0EB /* BenefitsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239734E2450491400EBA0EB /* BenefitsTVCell.swift */; };
 		523973512450496100EBA0EB /* BenefitsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 523973502450496100EBA0EB /* BenefitsTVCell.xib */; };
 		523DF53D2411D633006D6E01 /* UWButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52589AC9240EF7B200B15881 /* UWButton.swift */; };
+		52417FA3245AB36400368B0A /* BenefitDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52417FA2245AB36400368B0A /* BenefitDetailController.swift */; };
 		524A24162446B7E700D1653B /* BenefitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524A24152446B7E700D1653B /* BenefitModel.swift */; };
 		524A241824480CE800D1653B /* BKController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524A241724480CE800D1653B /* BKController.swift */; };
 		52EC8CAC2411DA87008ED795 /* BKControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EC8CAB2411DA87008ED795 /* BKControllerOld.swift */; };
@@ -40,6 +41,7 @@
 		47EA8A42237912FC003EA7D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5239734E2450491400EBA0EB /* BenefitsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitsTVCell.swift; sourceTree = "<group>"; };
 		523973502450496100EBA0EB /* BenefitsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BenefitsTVCell.xib; sourceTree = "<group>"; };
+		52417FA2245AB36400368B0A /* BenefitDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitDetailController.swift; sourceTree = "<group>"; };
 		524A24152446B7E700D1653B /* BenefitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitModel.swift; sourceTree = "<group>"; };
 		524A241724480CE800D1653B /* BKController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKController.swift; sourceTree = "<group>"; };
 		52589AC9240EF7B200B15881 /* UWButton.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = UWButton.swift; sourceTree = "<group>"; };
@@ -83,7 +85,9 @@
 				47EA8A38237912FC003EA7D9 /* HBController.swift */,
 				52EC8CAB2411DA87008ED795 /* BKControllerOld.swift */,
 				524A241724480CE800D1653B /* BKController.swift */,
+				52417FA2245AB36400368B0A /* BenefitDetailController.swift */,
 				471611B3237A1CF1001D5D63 /* ExpensesModel.swift */,
+				524A24152446B7E700D1653B /* BenefitModel.swift */,
 				47EA8A3A237912FC003EA7D9 /* Main.storyboard */,
 				47EA8A3D237912FC003EA7D9 /* Assets.xcassets */,
 				47EA8A3F237912FC003EA7D9 /* LaunchScreen.storyboard */,
@@ -94,7 +98,6 @@
 				523973502450496100EBA0EB /* BenefitsTVCell.xib */,
 				52EF97E32405E59D00B9E6BF /* iOSDropDown.swift */,
 				52589AC9240EF7B200B15881 /* UWButton.swift */,
-				524A24152446B7E700D1653B /* BenefitModel.swift */,
 			);
 			path = "United Way iOS";
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				523DF53D2411D633006D6E01 /* UWButton.swift in Sources */,
 				524A241824480CE800D1653B /* BKController.swift in Sources */,
 				47BD6004237A43A900BE7C80 /* TableViewCell.swift in Sources */,
+				52417FA3245AB36400368B0A /* BenefitDetailController.swift in Sources */,
 				5239734F2450491400EBA0EB /* BenefitsTVCell.swift in Sources */,
 				47EA8A39237912FC003EA7D9 /* HBController.swift in Sources */,
 				47EA8A35237912FC003EA7D9 /* AppDelegate.swift in Sources */,

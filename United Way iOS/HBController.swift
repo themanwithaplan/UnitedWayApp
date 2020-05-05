@@ -200,7 +200,7 @@ class HBController: UIViewController {
     
     // trigger action when button is touched up
     @objc func buttonTapped(sender: UIButton) {
-        print("Button was tapped")
+        ageTextFieldCounter = ageTextFieldCounter - 1
         verticalStack.removeArrangedSubview(horizontalSubview)
         horizontalSubview.removeFromSuperview()
 
@@ -224,18 +224,17 @@ class HBController: UIViewController {
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.backgroundColor = UIColor.white
         textField.borderStyle = .roundedRect
-        textField.tag = 2
+        textField.tag = ageTextFieldCounter
         
         let button = UIButton(frame: self.removeAge.frame)
         button.addTarget(self, action: #selector(buttonTapped(sender:)), for: UIControl.Event.touchUpInside)
-        button.tag = 3
+//        button.tag = 3
         button.setTitle("X", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.isHidden = false;
         button.isOpaque = true;
 
-        
         horizontalSubview = UIStackView()
         horizontalSubview.axis = .horizontal
         
@@ -250,7 +249,6 @@ class HBController: UIViewController {
         
         self.contentView.setNeedsLayout()
         self.contentView.layoutIfNeeded()
-        
     }
     
     func showSimpleAlert(option: Int) {
@@ -273,7 +271,6 @@ class HBController: UIViewController {
         buttonPressed = true
         if let countyCode = self.selectedCountyCode {
             var urlString: String?
-            
             if let text = self.ageTextField.text, !text.isEmpty {
             if (self.ageTextFieldCounter == 1) {
                 urlString = "https://bing.benefitkitchen.com/api/bing?address=\(countyCode)&persons[0][age]=\(ageTextField.text ?? "0")"
@@ -283,7 +280,7 @@ class HBController: UIViewController {
                         urlString = "https://bing.benefitkitchen.com/api/bing?address=\(countyCode)&persons[\(age-1)][age]=\(ageTextField.text ?? "0")"
                     } else {
                         if let textField = self.view.viewWithTag(age) as? UITextField {
-                            if (textField.text != "") {
+                            if let ageText = textField.text, !ageText.isEmpty {
                                 urlString?.append("&persons[\(age-1)][age]=\(textField.text!)")
                             }
                         }
